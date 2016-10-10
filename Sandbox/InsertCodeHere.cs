@@ -10,16 +10,21 @@ namespace Sandbox
 
             CubeCalculator cc = new CubeCalculator();
 
-            String userInput = cc.GetUserInput("Please enter an integer number:");
-            if (cc.IsANumber(userInput))
+            String userInput = cc.GetUserInput("Please enter a number (or q for quit): ");
+
+            while (userInput != "q")
             {
-                int value = cc.ConvertToNumber(userInput);
-                int result = cc.CalculateCube(value);
-                Console.WriteLine("The cube of {0} is {1}", value, result);
-            }
-            else
-            {
-                Console.WriteLine("Could not calculate...");
+                if (cc.IsANumber(userInput))
+                {
+                    int value = cc.ConvertToNumber(userInput);
+                    int result = cc.CalculateCube(value);
+                    Console.WriteLine("The cube of {0} is {1}", value, result);
+                }
+                else
+                {
+                    Console.WriteLine("Could not calculate...");
+                }
+                userInput = cc.GetUserInput("Please enter a number (or q for quit): ");
             }
 
             // The LAST line of code should be ABOVE this line
